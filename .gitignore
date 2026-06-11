@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+build/
+
+# production
+dist/
+
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# runtime data
+.pnpm-store/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# coverage (if testing)
+coverage/
+
+# optional
+.vercel/
