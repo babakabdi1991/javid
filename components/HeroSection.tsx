@@ -1,10 +1,12 @@
 // components/HeroSection.tsx
 'use client';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -20,6 +22,7 @@ export function HeroSection() {
 
   // Particle animation effect
   useEffect(() => {
+     if (typeof window === 'undefined') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -82,6 +85,11 @@ export function HeroSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  function handleClick(){
+    router.push("https://startransonline.com/")
+
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated canvas background */}
@@ -121,8 +129,8 @@ export function HeroSection() {
               با کیفیت و دقت بالا
             </span>
           </h1>
-
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+ 
+          <p className="text-xl md:text-2xl !text-gray-400 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             ارائه خدمات ترجمه رسمی با همکاری مترجمان رسمی قوه قضاییه، 
             <span className="font-semibold text-transparent bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text"> تضمین کیفیت </span>
             و 
@@ -131,7 +139,7 @@ export function HeroSection() {
 
           {/* Modern CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <button className="group relative bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 hover:from-orange-700 hover:via-pink-700 hover:to-purple-700 text-white px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 overflow-hidden">
+            <button onClick={handleClick} className="group relative bg-gradient-to-r cursor-pointer from-orange-600 via-pink-600 to-purple-600 hover:from-orange-700 hover:via-pink-700 hover:to-purple-700 text-white px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 overflow-hidden">
               <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
               <span className="relative flex items-center gap-2">
                 شروع ترجمه
@@ -140,7 +148,7 @@ export function HeroSection() {
                 </svg>
               </span>
             </button>
-            <button className="group backdrop-blur-md bg-white/20 hover:bg-white/30 border-2 border-white/30 text-slate-800 px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2">
+            <button onClick={handleClick}  className="group backdrop-blur-md bg-white/20 cursor-pointer hover:bg-white/30 border-2 border-white/30 text-slate-800 px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2">
               <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -169,17 +177,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Modern scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-slate-400 font-medium">اسکرول کنید</span>
-          <div className="w-6 h-10 border-2 border-slate-400 rounded-full flex justify-center hover:border-orange-500 transition-colors duration-300">
-            <div className="w-1.5 h-1.5 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full mt-2 animate-scroll"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating modern elements */}
+        {/* Floating modern elements */}
       <div className="absolute top-32 right-8 md:right-20 animate-float">
         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 opacity-20 blur-xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">

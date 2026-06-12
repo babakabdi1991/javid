@@ -84,13 +84,8 @@ export function ServicesSection() {
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-800 mb-3">{service.title}</h3>
-              <p className="text-slate-500 leading-relaxed">{service.description}</p>
-              <div className="mt-4 flex items-center text-primary-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                بیشتر بدانید
-                <svg className="w-4 h-4 mr-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0l-4-4m4 4l-4 4" />
-                </svg>
-              </div>
+              <p className="text-slate-500">{service.description}</p>
+             
             </div>
           ))}
         </div>
